@@ -18,6 +18,8 @@ pool.connect().then((dataBase) => {
   // Connected to database
     console.log("connected to DB")
 
+  //GET requests
+
     app.get('/questions', (req,res) => {
       dataBase.query('SELECT * FROM question')
       .then((result) => {res.json(result)})
