@@ -46,63 +46,79 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .question-card {
-    background-color: #ffff;
-    height: 40vh;
-    width: 40vw;
-    margin: 20px auto;
-    border-radius: 15px;
-  }
-
   .card-container{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 3%;
-    padding: 3%;
+    background-color: #ffff;
+    border-radius: 15px;
+      -webkit-border-radius: 15;
+      -moz-border-radius: 15;
+    height: 350px;
+    width: 700px;
+    margin: 5% auto;
+
+    overflow: hidden;
+
+    display: grid;
+    grid-auto-rows: 1fr; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "card-image card-body"; 
   }
 
   .card-image {
-    flex-basis: 150%;
+    justify-self: center; 
+    align-self: center; 
+    grid-area: card-image; 
+    width: 80%; 
+    height: 80%; 
   }
 
   .card-image img {
     width: 100%;
-    max-height: 100%;
+    height: 100%;
     border-radius: 15px;
+      -webkit-border-radius: 15;
+      -moz-border-radius: 15;
   }
 
   .card-body {
+    justify-self: left; 
+    align-self: center; 
+    grid-area: card-body; 
+    width: 90%; 
+    height: 90%; 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow: hidden;
   }
 
   .card-body h4 {
     font-size: 1.5vw;
+    padding-bottom: 10px;
     color: #1fc1c3; 
   }
 
   .card-body p {
-    font-size: 0.8vw;
+    font-size: 14px;
     text-align: justify;
+    flex: none;
   }
 
   .buttons button {
-    -webkit-border-radius: 11;
-    -moz-border-radius: 11;
+
     width: 20%;
     margin: 2%;
-    border-radius: 11px;
+    border-radius: 10px;
+      -webkit-border-radius: 10;
+      -moz-border-radius: 10;
     border: none;
     font-family: Arial;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     background: #1fc1c3;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
     text-decoration: none;
   }
 
@@ -111,4 +127,35 @@ export default {
     text-decoration: none;
   }
 
+/* -------------Mediaqueries Question card-------------------------- */
+  @media screen and (max-width: 768px ) {
+    
+    .card-container{
+      height: 500px;
+      width: 400px;
+      margin: 5% auto;
+      padding: 15px;
+
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+  }
+
+    .card-image {
+        width: 40%; 
+        height: auto; 
+      }
+
+    .card-body {
+      height: 100%; 
+      padding-top: 30px;
+    }
+
+    .card-body h4 {
+      font-size: 2vw;
+    }
+  }
+
+  
 </style>
