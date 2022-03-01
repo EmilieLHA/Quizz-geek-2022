@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <QuestionCard/>
+    <QuestionCard msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
