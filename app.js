@@ -24,7 +24,7 @@ pool.connect().then((dataBase) => {
   //GET requests
 
     app.get('/api/questions', (req,res) => {
-      dataBase.query('SELECT * FROM question')
+      dataBase.query('SELECT * FROM question ORDER BY question_id ASC')
       .then((result) => {res.json(result)})
     })
 
