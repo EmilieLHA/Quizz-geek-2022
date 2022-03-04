@@ -4,14 +4,14 @@
     <div class="card-container">
 
       <div class="card-image">
-        <img :src="require(`../assets/${question.image}`)" alt="image">
+        <img :src="require(`../assets/quizz-images/${questions[0].image}`)" alt="image">
       </div>
 
 
       <div class="card-body">
 
         <h4 class="card-title"> VRAI OU FAUX?</h4>
-        <p class="question">{{question.question}}</p>
+        <p class="question">{{questions[0].question}}</p>
 
         <div class="buttons">
           <button id="vrai">Vrai</button>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+
+import axios from 'axios';
 export default {
   name: 'QuestionCard',
   // props: {
@@ -33,12 +35,15 @@ export default {
   // },
   data() {
     return {
-      question: {
-        question_id: 1,
-        question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sapiente aut beatae nam, non aperiam. Ut non possimus harum laudantium expedita ratione natus at quos nulla vel assumenda, ab accusamus aliquam consequuntur rerum. Perferendis ducimus quae mollitia quisquam sint, molestias eius quidem amet veritatis nulla eaque nemo tempore maxime voluptate reiciendis quaerat voluptatem minus cum ipsam enim? Totamciendis molestiae, provident possimus.",
-        image: "pyramide.jpg",
-      }
+      questions: null
     }
+  },
+  created() {
+    axios.get('https://quizz-geek-2022.herokuapp.com/api/questions')
+    .then(response => {
+      this.questions = response.data.rows;
+      })
+    .catch(err => console.error(err.message))
   }
 }
 </script>
@@ -102,6 +107,7 @@ export default {
 
   .card-body p {
     font-size: 14px;
+    color: #0a253b;
     text-align: justify;
     flex: none;
   }
@@ -150,6 +156,7 @@ export default {
     .card-body {
       height: 100%; 
       padding-top: 30px;
+      font-size: 3vw;
     }
 
     .card-body h4 {
