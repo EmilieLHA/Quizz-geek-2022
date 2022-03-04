@@ -20,17 +20,12 @@ pool.connect().then((dataBase) => {
 
   //GET requests
 
-    app.get('/questions', (req,res) => {
+    app.get('/api/questions', (req,res) => {
       dataBase.query('SELECT * FROM question')
       .then((result) => {res.json(result)})
     })
 
-    app.get('/answers', (req,res) => {
-      dataBase.query('SELECT * FROM answer')
-      .then((result) => {res.json(result)})
-    })
-
-    app.get('/themes', (req,res) => {
+    app.get('/api/themes', (req,res) => {
       dataBase.query('SELECT * FROM theme')
       .then((result) => {res.json(result)})
     })
