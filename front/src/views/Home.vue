@@ -1,17 +1,30 @@
 <template>
   <div class="home">
-    <QuestionCard/>
+    <question-card :questions="questions"></question-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import QuestionCard from '@/components/QuestionCard.vue'
+import EventService from '@/services/EventService.js'
 
 export default {
   name: 'Home',
   components: {
-    QuestionCard
+    "question-card": QuestionCard
+  },
+  data() {
+    return {
+      questions: null
+    }
+  },
+  created() {
+    EventService.getQuestions()
+    .then(response => {
+      this.questions = response.data.rows[1];
+    })
+    .catch(err => console.log(err.message))
   }
 }
 </script>

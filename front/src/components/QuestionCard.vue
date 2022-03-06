@@ -4,15 +4,14 @@
     <div class="card-container">
 
       <div class="card-image">
-        <img :src="require(`../assets/quizz-images/${questions[0].image}`)" alt="image">
+        <img :src="require(`../assets/quizz-images/${questions.image}`)" alt="image">
       </div>
-
 
       <div class="card-body">
 
         <h4 class="card-title"> VRAI OU FAUX?</h4>
-        <p class="question">{{questions[0].question}}</p>
-
+        <p class="question">{{questions.question}}</p>
+        
         <div class="buttons">
           <button id="vrai">Vrai</button>
           <button id="faux">Faux</button>
@@ -27,23 +26,10 @@
 
 <script>
 
-import axios from 'axios';
 export default {
   name: 'QuestionCard',
-  // props: {
-  //   msg: String
-  // },
-  data() {
-    return {
-      questions: null
-    }
-  },
-  created() {
-    axios.get('https://quizz-geek-2022.herokuapp.com/api/questions')
-    .then(response => {
-      this.questions = response.data.rows;
-      })
-    .catch(err => console.error(err.message))
+  props: {
+    questions: Object
   }
 }
 </script>
