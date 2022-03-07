@@ -22,9 +22,9 @@ export default {
   created() {
     EventService.getQuestions()
     .then(response => {
-      this.questions = response.data.rows[1];
+      this.questions = response.data.rows[0];
     })
-    .catch(err => console.log(err.message))
+    .catch(err => {console.log(err.message)})
   }
 }
 </script>

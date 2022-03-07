@@ -1,16 +1,11 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://quizz-geek-2022.herokuapp.com/api/',
-    withCredentials: false,
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-    }
+    baseURL: 'https://quizz-geek-2022.herokuapp.com/api/'
 })
 
 export default {
     getQuestions() {
-        return apiClient.get('/questions')
+        return apiClient.get('/questions/1')
     }
 }
