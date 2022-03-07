@@ -27,7 +27,12 @@ pool.connect().then((dataBase) => {
       dataBase.query('SELECT * FROM question ORDER BY question_id ASC')
       .then((result) => {res.json(result)})
     })
-
+    
+    app.get('/api/questions/1', (req,res) => {
+      dataBase.query('SELECT * FROM question WHERE question_id = 1')
+      .then((result) => {res.json(result)})
+    })
+  
     app.get('/api/themes', (req,res) => {
       dataBase.query('SELECT * FROM theme')
       .then((result) => {res.json(result)})
