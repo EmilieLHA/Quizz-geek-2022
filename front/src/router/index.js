@@ -5,13 +5,13 @@ import Accueil from '../views/Accueil.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/Accueil',
     name: 'Accueil',
     component: Accueil
+  },
+  {
+    path: '/Home',
+    name: 'Home',
+    component: Home
   },
   {
     path: '/about',
