@@ -7,7 +7,7 @@
 <script>
 // @ is an alias to /src
 import QuestionCard from '@/components/QuestionCard.vue'
-import EventService from '@/services/EventService.js'
+import {getQuestions} from '@/services/EventService'
 
 export default {
   name: 'Home',
@@ -16,11 +16,17 @@ export default {
   },
   data() {
     return {
-      questions: null
+      questions: {
+       answer: "",
+       comment: "",
+       image: "default.jpg",
+       question_id: "",
+       theme_id: ""
+      }
     }
   },
   created() {
-    EventService.getQuestions()
+    getQuestions()
     .then(response => {
       this.questions = response.data.rows[0];
     })

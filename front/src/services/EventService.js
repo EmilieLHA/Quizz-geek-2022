@@ -4,8 +4,10 @@ const apiClient = axios.create({
     baseURL: 'https://quizz-geek-2022.herokuapp.com/api/'
 })
 
-export default {
-    getQuestions() {
+export function getQuestions() {
         return apiClient.get('/questions/1')
-    }
+}
+
+export function getThemes() {
+        return apiClient.get('/themes')
 }

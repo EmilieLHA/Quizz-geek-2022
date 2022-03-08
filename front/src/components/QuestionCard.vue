@@ -88,12 +88,11 @@ export default {
   .card-body h4 {
     font-size: 1.5vw;
     padding-bottom: 10px;
-    color: #1fc1c3; 
+    color: #c74d35; 
   }
 
   .card-body p {
-    font-size: 14px;
-    color: #0a253b;
+    font-size: 16px;
     text-align: justify;
     flex: none;
   }
@@ -109,13 +108,13 @@ export default {
     font-family: Arial;
     color: #ffffff;
     font-size: 18px;
-    background: #1fc1c3;
+    background: #f1b150;
     padding: 10px 10px 10px 10px;
     text-decoration: none;
   }
 
   .buttons button:hover {
-    background: #162f45;
+    background: #c74d35;
     text-decoration: none;
   }
 
@@ -150,5 +149,14 @@ export default {
     }
   }
 
-  
+  /* Colors 
+HEX
+main rose foncÃ© #d88c85
+main rose clair #f6d9dd
+accent jaune #f1b150
+accent brique #c74d35
+neutral #f4e5e5
+neutral clair #f9f5f2
+blanc accueil: #f0f0f0
+*/
 </style>

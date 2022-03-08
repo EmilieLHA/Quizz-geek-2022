@@ -1,8 +1,15 @@
 <template>
   <div class="application">
+
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+
+      <h1 id="titre"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></h1>
+
+      <div id="links">
+        <router-link to="/Accueil">Accueil</router-link><span class="pipe"> | </span>
+        <router-link to="/about">About</router-link>
+      </div>
+
     </div>
     <router-view/>
   </div>    
@@ -26,39 +33,49 @@ body {
   height: 100%;
   min-width: 100vw;
   min-height: 100vh;
-
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #ffff;
-  background: #0a253b;
+  color: #414447;
+  background: #f0f0f0;
 }
 
 #nav {
-  padding: 30px;
-  background-color: #0b253c;
-  border-bottom: 1px solid #112b41;
+  padding-right: 30px;
+  background-color: #d88c85;
+  border-bottom: 1px dotted #f4e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#titre img {
+ width: 300px;
 }
 
 #nav a {
+  
   font-weight: bold;
-  color: #ffffff;
+  color: #f9f5f2;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
-  color: #1fc1c3;
+  color: #c74d35;
 }
 
-/* 
-1fc1c3
-0a253b - background
-0b253c
-738394
-ffffff
-f6fcfc
-e6efef
-738394
-162f45
+#nav span {
+  color: #f6d9dd;
+}
+
+/* Colors 
+HEX
+main rose foncÃ© #d88c85
+main rose clair #f6d9dd
+accent jaune #f1b150
+accent brique #c74d35
+neutral #f4e5e5
+neutral clair #f9f5f2
+blanc accueil: #f0f0f0
 */
 </style>
