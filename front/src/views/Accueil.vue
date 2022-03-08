@@ -49,4 +49,26 @@ export default {
   align-content: center;
 }
 
+
+/* ------------- Mediaqueries ---------------- */
+@media screen and (max-width: 768px ) {
+  .accueil {
+    width: 425px;
+    margin: 50px auto;
+  }
+}
+
+@media screen and (max-width: 425px ) {
+  .accueil {
+    width: 375px;
+    margin: 30px auto;
+  }
+}
+
+@media screen and (max-width: 320px ) {
+  .accueil {
+    width: 320px;
+    margin: 30px auto;
+  }
+}
 </style>

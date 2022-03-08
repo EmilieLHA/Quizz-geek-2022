@@ -31,4 +31,11 @@ img:hover {
     transform: translateY(-5px);
 }
 
+/* ------------- Mediaqueries ---------------- */
+@media screen and (max-width: 768px ) {
+    img {
+        width: 250px;
+        margin: 5px;
+    }
+}
 </style>

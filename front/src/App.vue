@@ -1,5 +1,5 @@
 <template>
-  <div class="application">
+  <div class="app">
 
     <div id="nav">
 
@@ -24,24 +24,26 @@
 }
 
 body {
-  overflow: hidden;
   font-size: 20px;
 }
 
 #app {
   width: 100%;
   height: 100%;
-  min-width: 100vw;
-  min-height: 100vh;
+  margin: auto;
+  /* min-width: 100vw; */
+  /* min-height: 100vh; */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #414447;
-  background: #f0f0f0;
+  background: #fff;
 }
 
 #nav {
   padding-right: 30px;
+  padding-left: 30px;
+  width: 100%;
   background-color: #d88c85;
   border-bottom: 1px dotted #f4e5e5;
   display: flex;
@@ -66,6 +68,22 @@ body {
 
 #nav span {
   color: #f6d9dd;
+}
+
+/* ------------- Mediaqueries ---------------- */
+@media screen and (max-width: 768px ) {
+  #titre img {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 425px ) {
+  body {
+    font-size: 12px;
+  }
+  #titre img {
+    width: 150px;
+  }
 }
 
 /* Colors 
