@@ -6,7 +6,7 @@
       <h1 id="titre"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></h1>
 
       <div id="links">
-        <router-link to="/Accueil">Accueil</router-link><span class="pipe"> | </span>
+        <router-link to="/">Accueil</router-link><span class="pipe"> | </span>
         <router-link to="/about">About</router-link>
       </div>
 
