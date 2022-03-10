@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'front/dist')));
+app.use(express.static(path.join(__dirname, '_front/dist')));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
