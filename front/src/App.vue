@@ -1,21 +1,36 @@
 <template>
   <div class="app">
 
-    <div id="nav">
+    <nav class="nav">
 
-      <h1 id="titre"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></h1>
+      <div id="logo"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></div>
 
-      <div id="links">
-        <router-link to="/">Accueil</router-link><span class="pipe"> | </span>
-        <router-link to="/about">About</router-link>
+      <div class="links">
+
+        <div class="link-bloc">
+          <span class="link">
+            <router-link to="/">Accueil</router-link>
+          </span>
+        </div>
+        
+        <span class="pipe"> | </span>
+
+        <div class="link-bloc">
+          <span class="link">
+            <router-link to="/about">About</router-link>
+          </span>
+        </div>
+
       </div>
 
-    </div>
+    </nav>
     <router-view/>
   </div>    
 </template>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 *, ::before, ::after {
     box-sizing: border-box;
@@ -24,23 +39,21 @@
 }
 
 body {
+  font-family: 'Quicksand', sans-serif;
   font-size: 20px;
 }
 
-#app {
+.app {
   width: 100%;
   height: 100%;
   margin: auto;
-  /* min-width: 100vw; */
-  /* min-height: 100vh; */
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #414447;
   background: #fff;
 }
 
-#nav {
+.nav {
   padding-right: 30px;
   padding-left: 30px;
   width: 100%;
@@ -51,23 +64,44 @@ body {
   justify-content: space-between;
 }
 
-#titre img {
+#logo img {
  width: 300px;
 }
 
-#nav a {
-  
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.link a {
   font-weight: bold;
   color: #f9f5f2;
   text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
+.link-bloc span::after {
+  content: '';
+  display: block;
+  width: 0px;
+  margin: 5px auto 0 auto;
+  height: 2px;
+  border-radius: 2px;
+  background: #f9f5f2;
+  transition: width 0.2s ease-out;
+}
+
+.link-bloc span:hover::after {
+  width: 100%;
+}
+
+.nav a.router-link-exact-active {
   color: #c74d35;
 }
 
-#nav span {
+.pipe {
   color: #f6d9dd;
+  margin: 0px 10px;
 }
 
 /* ------------- Mediaqueries ---------------- */
@@ -81,7 +115,7 @@ body {
   body {
     font-size: 12px;
   }
-  #titre img {
+  #logo img {
     width: 150px;
   }
 }
