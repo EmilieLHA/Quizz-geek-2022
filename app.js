@@ -14,6 +14,7 @@ const port = process.env.PORT || 3000;
 
 //Database connection
 const { Pool } = require('pg');
+const res = require('express/lib/response');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -27,22 +28,18 @@ pool.connect().then((dataBase) => {
     console.log("connected to DB")
 
   //GET requests
-
-    app.get('/api/questions', (req,res) => {
-      dataBase.query('SELECT * FROM question ORDER BY question_id ASC')
-      .then((result) => {res.json(result)})
-    })
-    
-    app.get('/api/questions/1', (req,res) => {
-      dataBase.query('SELECT * FROM question WHERE question_id = 1')
-      .then((result) => {res.json(result)})
-    })
   
     app.get('/api/themes', (req,res) => {
       dataBase.query('SELECT * FROM theme')
       .then((result) => {res.json(result)})
     })
 
+    app.get('/api/questions/theme/:theme_id', (req,res) => {
+      console.log(req.params.theme_id)
+      dataBase.query('SELECT * FROM question WHERE theme_id = $1 ORDER BY RANDOM() LIMIT 5', [req.params.theme_id])
+      .then((result) => {res.json(result)})
+      .catch((err) => {res.json(err.message)})
+    })
   })
     
   .catch((err) => {
