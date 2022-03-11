@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" v-if="questions">
     <question-card :questions="questions"></question-card>
   </div>
 </template>
@@ -10,23 +10,18 @@ import QuestionCard from '@/components/QuestionCard.vue'
 import {getQuestions} from '@/services/EventService'
 
 export default {
+  props: ['theme_id'],
   name: 'Quiz',
   components: {
     "question-card": QuestionCard
   },
   data() {
     return {
-      questions: {
-       answer: "",
-       comment: "",
-       image: "default.jpg",
-       question_id: "",
-       theme_id: ""
-      }
+      questions: null
     }
   },
   created() {
-    getQuestions()
+    getQuestions(this.theme_id)
     .then(response => {
       this.questions = response.data.rows[0];
     })

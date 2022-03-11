@@ -3,7 +3,7 @@
 
     <nav class="nav">
 
-      <div id="logo"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></div>
+      <router-link id="logo" to="/"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></router-link>
 
       <div class="links">
 
@@ -24,7 +24,9 @@
       </div>
 
     </nav>
+
     <router-view/>
+
   </div>    
 </template>
 

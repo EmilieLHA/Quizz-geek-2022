@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Quiz from '../views/Quiz.vue'
-import Accueil from '../views/Accueil.vue'
+import ThemeSelection from '../views/ThemeSelection.vue'
 import About from '../views/About.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Accueil',
-    component: Accueil
+    name: 'ThemeSelection',
+    component: ThemeSelection
   },
   {
-    path: '/Quiz',
+    path: '/Quiz/:theme_id',
     name: 'Quiz',
+    props: true,
     component: Quiz
   },
   {

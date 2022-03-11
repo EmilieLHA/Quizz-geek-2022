@@ -1,8 +1,9 @@
 <template>
     
-    <div class="accueil">
+    <div class="themeSelection">
+
       <div class="theme-cards">
-        <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme" @theme-select="openSelectedQuiz"></theme-card>
+        <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
       </div>
 
     </div>
@@ -14,7 +15,7 @@ import {getThemes} from '@/services/EventService'
 import ThemeCard from '../components/ThemeCard.vue'
 
 export default {
-  name: 'Accueil',
+  name: 'ThemeSelection',
   components: {
     "theme-card": ThemeCard
   },
@@ -22,12 +23,6 @@ export default {
     return {
       themes: null,
       selectedTheme: undefined
-    }
-  },
-  methods: {
-    openSelectedQuiz(theme) {
-      console.log("Theme selectionné");
-      this.selectedTheme = theme;
     }
   },
   created() {
@@ -43,7 +38,7 @@ export default {
 
 
 <style scoped>
-.accueil {
+.themeSelection {
   width: 760px;
   margin: 100px auto;
 }
@@ -58,21 +53,21 @@ export default {
 
 /* ------------- Mediaqueries ---------------- */
 @media screen and (max-width: 768px ) {
-  .accueil {
+  .themeSelection {
     width: 425px;
     margin: 50px auto;
   }
 }
 
 @media screen and (max-width: 425px ) {
-  .accueil {
+  .themeSelection {
     width: 375px;
     margin: 30px auto;
   }
 }
 
 @media screen and (max-width: 320px ) {
-  .accueil {
+  .themeSelection {
     width: 320px;
     margin: 30px auto;
   }

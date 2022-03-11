@@ -1,10 +1,10 @@
 <template>
-  <div class="question-card">
+  <form class="question-card">
 
     <div class="card-container">
 
       <div class="card-image">
-        <img :src="require(`../assets/quizz-images/${questions.image}`)" alt="image">
+        <img :src="getImgUrl(questions.image)" alt="image">
       </div>
 
       <div class="card-body">
@@ -13,15 +13,15 @@
         <p class="question">{{questions.question}}</p>
         
         <div class="buttons">
-          <button id="vrai">Vrai</button>
-          <button id="faux">Faux</button>
+          <input type="button" id="vrai" @click="checkScore" value="Vrai">
+          <input type="button" id="faux" @click="checkScore" value="faux">
         </div>
 
       </div>
 
     </div>
 
-  </div>
+  </form>
 </template>
 
 <script>
@@ -30,6 +30,24 @@ export default {
   name: 'QuestionCard',
   props: {
     questions: Object
+  },
+  methods: {
+    getImgUrl(img) {
+      return this.questions.image == null
+      ? require ('../assets/quizz-images/default.jpg')
+      : require ('../assets/quizz-images/'+ img)
+    },
+    convertAnswer(buttonValue) {
+      return ((buttonValue == "Vrai") ? true : false);
+    },
+    checkScore(event) {
+      console.log(event.target.value);
+      if (this.convertAnswer(event.target.value) == this.questions.answer) {
+        console.log("Correct answer")
+      } else {
+        console.log("WRONG!!")
+      }
+    }
   }
 }
 </script>
@@ -39,6 +57,7 @@ export default {
 
   .card-container{
     background-color: #ffff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 15px;
       -webkit-border-radius: 15;
       -moz-border-radius: 15;
@@ -97,7 +116,7 @@ export default {
     flex: none;
   }
 
-  .buttons button {
+  .buttons input {
 
     width: 20%;
     margin: 2%;
@@ -113,7 +132,7 @@ export default {
     text-decoration: none;
   }
 
-  .buttons button:hover {
+  .buttons input:hover {
     background: #c74d35;
     text-decoration: none;
   }

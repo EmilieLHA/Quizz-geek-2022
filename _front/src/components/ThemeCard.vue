@@ -1,9 +1,12 @@
 <template>
-    <div class="theme-card" v-on:click="selectTheme">
+    
+    <router-link :to="{ name: 'Quiz', params: {theme_id: theme.theme_id}}">
+        <div class="theme-card">
         
             <img :src="require(`../assets/quizz-images/${theme.theme_image}`)" alt="image"> 
 
-    </div>
+        </div>
+    </router-link>
 
 </template>
 
@@ -12,19 +15,6 @@ export default {
     name: 'ThemeCard',
     props: {
         theme: Object
-    },
-    data() {
-        return {
-            selectedTheme: undefined
-        }
-    },
-    mounted() {
-        this.selectedTheme = this.theme;
-    },
-    methods: {
-        selectTheme(){
-            this.$emit('theme-select', this.selectedTheme)
-        }
     }
 }
 </script>
