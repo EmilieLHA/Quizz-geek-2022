@@ -35,7 +35,6 @@ pool.connect().then((dataBase) => {
     })
 
     app.get('/api/questions/theme/:theme_id', (req,res) => {
-      console.log(req.params.theme_id)
       dataBase.query('SELECT * FROM question WHERE theme_id = $1 ORDER BY RANDOM() LIMIT 5', [req.params.theme_id])
       .then((result) => {res.json(result)})
       .catch((err) => {res.json(err.message)})

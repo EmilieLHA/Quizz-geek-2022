@@ -1,7 +1,7 @@
 <template>
-    <div class="theme-card">
+    <div class="theme-card" v-on:click="selectTheme">
         
-        <img :src="require(`../assets/quizz-images/${theme.theme_image}`)" alt="image"> 
+            <img :src="require(`../assets/quizz-images/${theme.theme_image}`)" alt="image"> 
 
     </div>
 
@@ -12,6 +12,19 @@ export default {
     name: 'ThemeCard',
     props: {
         theme: Object
+    },
+    data() {
+        return {
+            selectedTheme: undefined
+        }
+    },
+    mounted() {
+        this.selectedTheme = this.theme;
+    },
+    methods: {
+        selectTheme(){
+            this.$emit('theme-select', this.selectedTheme)
+        }
     }
 }
 </script>

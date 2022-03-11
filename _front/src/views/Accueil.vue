@@ -2,7 +2,7 @@
     
     <div class="accueil">
       <div class="theme-cards">
-        <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
+        <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme" @theme-select="openSelectedQuiz"></theme-card>
       </div>
 
     </div>
@@ -20,14 +20,20 @@ export default {
   },
   data() {
     return {
-      themes: null
+      themes: null,
+      selectedTheme: undefined
+    }
+  },
+  methods: {
+    openSelectedQuiz(theme) {
+      console.log("Theme selectionné");
+      this.selectedTheme = theme;
     }
   },
   created() {
     getThemes()
     .then(response => {
       this.themes = response.data.rows;
-      console.log(response.data.rows)
     })
     .catch(err => {console.log(err.message)})
   }

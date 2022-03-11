@@ -10,7 +10,7 @@ import QuestionCard from '@/components/QuestionCard.vue'
 import {getQuestions} from '@/services/EventService'
 
 export default {
-  name: 'Home',
+  name: 'Quiz',
   components: {
     "question-card": QuestionCard
   },
