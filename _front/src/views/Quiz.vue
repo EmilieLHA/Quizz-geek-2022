@@ -1,6 +1,6 @@
 <template>
   <div class="home" v-if="questions">
-    <question-card :questions="questions"></question-card>
+    <question-card v-for="question in questions" :key="question.question_id" :question="question"></question-card>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   created() {
     getQuestions(this.theme_id)
     .then(response => {
-      this.questions = response.data.rows[0];
+      this.questions = response.data.rows;
     })
     .catch(err => {console.log(err.message)})
   }

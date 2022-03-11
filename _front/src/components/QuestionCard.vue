@@ -4,13 +4,13 @@
     <div class="card-container">
 
       <div class="card-image">
-        <img :src="getImgUrl(questions.image)" alt="image">
+        <img :src="getImgUrl(question.image)" alt="image">
       </div>
 
       <div class="card-body">
 
         <h4 class="card-title"> VRAI OU FAUX?</h4>
-        <p class="question">{{questions.question}}</p>
+        <p class="question">{{question.question}}</p>
         
         <div class="buttons">
           <input type="button" id="vrai" @click="checkScore" value="Vrai">
@@ -29,11 +29,11 @@
 export default {
   name: 'QuestionCard',
   props: {
-    questions: Object
+    question: Object
   },
   methods: {
     getImgUrl(img) {
-      return this.questions.image == null
+      return this.question.image == null
       ? require ('../assets/quizz-images/default.jpg')
       : require ('../assets/quizz-images/'+ img)
     },
