@@ -22,7 +22,6 @@ export default {
   data() {
     return {
       themes: null,
-      selectedTheme: undefined
     }
   },
   created() {

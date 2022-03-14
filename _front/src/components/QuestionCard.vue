@@ -1,5 +1,5 @@
 <template>
-  <form class="question-card">
+  <div class="question-card">
 
     <div class="card-container">
 
@@ -9,19 +9,32 @@
 
       <div class="card-body">
 
-        <h4 class="card-title"> VRAI OU FAUX?</h4>
-        <p class="question">{{question.question}}</p>
-        
-        <div class="buttons">
-          <input type="button" id="vrai" @click="checkScore" value="Vrai">
-          <input type="button" id="faux" @click="checkScore" value="faux">
+        <h4 v-if="!showComment" class="card-title"> VRAI OU FAUX?</h4>
+        <h4 v-else>{{ (this.correctAnswer == true) ? "BRAVO, bonne réponse!" : "Mauvaise réponse!" }}</h4>
+
+        <div class="card-text">
+          <p v-if="!showComment" class="question">{{question.question}}</p>
+
+          <p v-else>C'est {{(question.answer == true) ? "VRAI" : "FAUX"}}</p>
+          <p v-if="showComment">{{question.comment}}</p>
+        </div>
+
+        <div class="buttons" v-if="!showComment">
+          <input class="selection" type="button" id="vrai" @click="checkScore" value="Vrai">
+          <input class="selection" type="button" id="faux" @click="checkScore" value="Faux">
+        </div>
+        <div class="buttons" v-else-if="showComment && !endOfQuiz">
+          <input type="button" class="next" @click="callNextQuestion" value="Next">
+        </div>
+        <div class="buttons" v-else-if="showComment && endOfQuiz">
+          <input type="button" class="next" value="Résultats">
         </div>
 
       </div>
 
     </div>
 
-  </form>
+  </div>
 </template>
 
 <script>
@@ -29,8 +42,29 @@
 export default {
   name: 'QuestionCard',
   props: {
-    question: Object
+    question: Object,
+    checkPageTurn: Boolean,
+    currentPage: Number,
+    endOfQuiz: Boolean
   },
+
+  data() {
+    return {
+      showComment: false,
+      icon: null,
+      correctAnswer: undefined
+    }
+  },
+
+  //Boolean parameters thats changes each time you go to next question in order to change content
+  watch: {
+    checkPageTurn(newVal, oldVal) {
+      console.log('Prop reset change form', oldVal, 'to', newVal);
+      this.showComment = false;
+      this.correctAnswer = undefined;
+    }
+  },
+
   methods: {
     getImgUrl(img) {
       return this.question.image == null
@@ -41,12 +75,16 @@ export default {
       return ((buttonValue == "Vrai") ? true : false);
     },
     checkScore(event) {
-      console.log(event.target.value);
-      if (this.convertAnswer(event.target.value) == this.questions.answer) {
-        console.log("Correct answer")
+      if (this.convertAnswer(event.target.value) == this.question.answer) {
+        this.correctAnswer = true;
+
       } else {
-        console.log("WRONG!!")
+        this.correctAnswer = false;
       }
+      this.showComment = true;
+    },
+    callNextQuestion() {
+      this.$emit('load-next-question')
     }
   }
 }
@@ -116,9 +154,12 @@ export default {
     flex: none;
   }
 
-  .buttons input {
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
 
-    width: 20%;
+  .buttons input {
     margin: 2%;
     border-radius: 10px;
       -webkit-border-radius: 10;
@@ -135,6 +176,14 @@ export default {
   .buttons input:hover {
     background: #c74d35;
     text-decoration: none;
+  }
+
+  .selection {
+    width: 50%;
+  }
+
+  .next {
+    width: 100%;
   }
 
 /* -------------Mediaqueries Question card-------------------------- */
