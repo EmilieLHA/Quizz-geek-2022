@@ -27,7 +27,7 @@
           <input type="button" class="next" @click="callNextQuestion" value="Next">
         </div>
         <div class="buttons" v-else-if="showComment && endOfQuiz">
-          <input type="button" class="next" value="Résultats">
+            <input type="button" class="next" value="Résultats" @click="sendResults"> 
         </div>
 
       </div>
@@ -52,7 +52,8 @@ export default {
     return {
       showComment: false,
       icon: null,
-      correctAnswer: undefined
+      correctAnswer: undefined,
+      score:0
     }
   },
 
@@ -77,7 +78,7 @@ export default {
     checkScore(event) {
       if (this.convertAnswer(event.target.value) == this.question.answer) {
         this.correctAnswer = true;
-
+        this.score++;
       } else {
         this.correctAnswer = false;
       }
@@ -85,6 +86,9 @@ export default {
     },
     callNextQuestion() {
       this.$emit('load-next-question')
+    },
+    sendResults() {
+      this.$emit('send-results', this.score)
     }
   }
 }
@@ -101,7 +105,7 @@ export default {
       -moz-border-radius: 15;
     height: 350px;
     width: 700px;
-    margin: 5% auto;
+    margin: 3% auto;
 
     overflow: hidden;
 
@@ -145,7 +149,7 @@ export default {
   .card-body h4 {
     font-size: 1.5vw;
     padding-bottom: 10px;
-    color: #c74d35; 
+    color: #d88c85; 
   }
 
   .card-body p {
@@ -165,12 +169,12 @@ export default {
       -webkit-border-radius: 10;
       -moz-border-radius: 10;
     border: none;
-    font-family: Arial;
     color: #ffffff;
     font-size: 18px;
     background: #f1b150;
     padding: 10px 10px 10px 10px;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .buttons input:hover {
