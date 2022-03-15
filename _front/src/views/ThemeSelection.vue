@@ -2,7 +2,9 @@
     
     <div class="themeSelection">
 
+
       <div class="theme-cards">
+        <loader v-if="isLoading" color="#f1b150" scale=0.6></loader>
         <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
       </div>
 
@@ -13,21 +15,25 @@
 <script>
 import {getThemes} from '@/services/EventService'
 import ThemeCard from '../components/ThemeCard.vue'
+import Loader from '../components/Loader.vue'
 
 export default {
   name: 'ThemeSelection',
   components: {
-    "theme-card": ThemeCard
+    "theme-card": ThemeCard,
+    Loader
   },
   data() {
     return {
       themes: null,
+      isLoading: true
     }
   },
   created() {
     getThemes()
     .then(response => {
       this.themes = response.data.rows;
+      this.isLoading = false;
     })
     .catch(err => {console.log(err.message)})
   }
