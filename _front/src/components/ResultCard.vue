@@ -6,7 +6,7 @@
       <p>Votre score est de <br> <span id="score">{{score}} / 5</span></p>
       <p v-html="message"></p>
         <router-link to="/">
-          <div class="theme-card">
+          <div class="button">
             <img src="../assets/quizz-images/Logo.svg" alt="image"> 
           </div>
         </router-link>
@@ -26,7 +26,7 @@ export default {
       titre(){
         if (this.score==0) {
           return "DESOLE!"
-        } else if (this.score >0 && this.score < 3) {
+        } else if (this.score >0 && this.score < 5) {
           return "PAS MAL!"
         } else {
           return "BRAVO!"
@@ -35,7 +35,7 @@ export default {
       message(){
         if (this.score==0) {
           return "On ne peut pas exceller dans tous les domaines. </br> N'hésitez pas à tenter un autre quiz!"
-        } else if (this.score >0 && this.score < 3) {
+        } else if (this.score >0 && this.score < 5) {
           return "On tente une autre catégorie pour voir si vous pouvez faire mieux?"
         } else {
           return "Vous êtes un expert. </br> On tente une autre catégorie?"
@@ -56,7 +56,7 @@ export default {
     height: 350px;
     width: 700px;
     margin: 3% auto;
-    padding: 3%;
+    padding: 10px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -73,8 +73,16 @@ export default {
     margin: auto;
   }
 
-  img {
-    width: 20%;
+  img{
+    width: 15%;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  img:hover {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
   }
 
   #score {
