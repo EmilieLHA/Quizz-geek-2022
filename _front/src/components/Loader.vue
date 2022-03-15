@@ -18,17 +18,12 @@ export default {
     color: {
       type: String,
       default: '#41b883',
-    },
-    scale: {
-      type: Number,
-      default: 1,
-    },
+    }
   },
   computed: {
     cssVars() {
       return {
         '--color': this.color,
-        '--scale': this.scale,
       }
     }
   }
@@ -43,7 +38,6 @@ export default {
   width: 125px;
   height: 125px;
   margin: auto;
-  transform: scale(var(--scale));
 }
 .loader > span {
   position: absolute;

@@ -90,4 +90,24 @@ export default {
     font-size: 3em;
   }
 
+  
+/* -------------Mediaqueries Result card-------------------------- */
+@media screen and (max-width: 768px ) {
+    
+  .card-container{
+    height: 500px;
+    width: 400px;
+    margin: 5% auto;
+    padding: 30px;
+  }
+
+  img{
+    width: 25%;
+  }
+
+  #score {
+    font-size: 2em;
+  }
+}
+
 </style>

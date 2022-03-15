@@ -4,7 +4,7 @@
 
 
       <div class="theme-cards">
-        <loader v-if="isLoading" color="#f1b150" scale=0.6></loader>
+        <loader v-if="isLoading" color="#f1b150"></loader>
         <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
       </div>
 
