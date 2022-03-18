@@ -1,4 +1,5 @@
 <template>
+
   <nav class="nav">
 
       <router-link id="logo" to="/"><img src="@/assets/quizz-images/quiz.svg" alt="logo"></router-link>
@@ -15,13 +16,21 @@
 
         <div class="link-bloc">
           <span class="link">
-            <router-link to="/about">About</router-link>
+            <router-link to="/About">A propos</router-link>
+          </span>
+        </div>
+        
+        <span class="pipe"> | </span>
+
+        <div class="link-bloc">
+          <span class="link">
+            <a href="https://emilielharidon.com/" target="_blank"> Mon Portfolio</a>
           </span>
         </div>
 
       </div>
-
     </nav>
+
 </template>
 
 <script>
@@ -55,8 +64,9 @@ export default {
   align-items: baseline;
 }
 
-.link a {
+.link a {  
   font-weight: bold;
+  font-size: 20px;
   color: #f9f5f2;
   text-decoration: none;
 }

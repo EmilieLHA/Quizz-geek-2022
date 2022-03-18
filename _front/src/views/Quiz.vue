@@ -1,23 +1,26 @@
 <template>
+  <transition name="fade" mode="out-in">
   <div class="home" v-if="questions">
 
-    <div v-show="!showResultComponent" class="questionCard-header">
-      <h4>Question {{currentPage}} sur 5 </h4>
-    </div>
+      <div v-show="!showResultComponent" class="questionCard-header">
+        <h4>Question {{currentPage}} sur 5 </h4>
+      </div>
 
-    <div v-show="showResultComponent" class="questionCard-header">
-       <h4>Resultats </h4>
-    </div>
+      <div v-show="showResultComponent" class="questionCard-header">
+        <h4>Resultats </h4>
+      </div>
 
-    <question-card v-if="!showResultComponent"
-    :question="questionToDisplay" :checkPageTurn="checkPageTurn" :endOfQuiz="endOfQuiz" 
-    @load-next-question="loadNextQuestion"
-    @send-results="getScore"
-     ></question-card>
+      <question-card v-if="!showResultComponent"
+      :question="questionToDisplay" :checkPageTurn="checkPageTurn" :endOfQuiz="endOfQuiz" 
+      @load-next-question="loadNextQuestion"
+      @send-results="getScore"
+      ></question-card>
 
-    <result-card v-if="showResultComponent" :score="score"></result-card>
+      <result-card v-if="showResultComponent" :score="score"></result-card>
+
 
   </div>
+  </transition>
 </template>
 
 <script>

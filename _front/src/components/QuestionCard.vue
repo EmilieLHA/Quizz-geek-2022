@@ -1,6 +1,7 @@
 <template>
   <div class="question-card">
 
+
     <div class="card-container">
 
       <div class="card-image">
@@ -35,6 +36,7 @@
     </div>
 
   </div>
+
 </template>
 
 <script>
@@ -221,6 +223,7 @@ export default {
     }
   }
 
+/*
   /* Colors 
 HEX
 main rose foncÃ© #d88c85

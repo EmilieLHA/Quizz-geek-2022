@@ -1,27 +1,23 @@
 <template>
-    
+
     <div class="themeSelection">
-
-
-      <div class="theme-cards">
-        <loader v-if="isLoading" color="#f1b150"></loader>
+    
+      <div class="theme-cards" v-if="!isLoading">
         <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
       </div>
 
     </div>
-
+  
 </template>
 
 <script>
 import {getThemes} from '@/services/EventService'
 import ThemeCard from '../components/ThemeCard.vue'
-import Loader from '../components/Loader.vue'
 
 export default {
   name: 'ThemeSelection',
   components: {
     "theme-card": ThemeCard,
-    Loader
   },
   data() {
     return {
@@ -43,6 +39,7 @@ export default {
 
 
 <style scoped>
+
 .themeSelection {
   width: 760px;
   margin: 100px auto;
@@ -54,7 +51,6 @@ export default {
   justify-content: center;
   align-content: center;
 }
-
 
 /* ------------- Mediaqueries ---------------- */
 @media screen and (max-width: 768px ) {
@@ -77,4 +73,5 @@ export default {
     margin: 30px auto;
   }
 }
+
 </style>
