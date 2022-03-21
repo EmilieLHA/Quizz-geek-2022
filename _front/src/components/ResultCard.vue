@@ -110,4 +110,16 @@ export default {
   }
 }
 
+@media screen and (max-width: 425px ) {
+
+  .card-body h4 {
+      font-size: 4vw;
+  }
+  
+  .card-container{
+    height: 400px;
+    width: 300px;
+  }
+}
+
 </style>

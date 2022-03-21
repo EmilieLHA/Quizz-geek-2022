@@ -17,8 +17,7 @@
       ></question-card>
 
       <result-card v-if="showResultComponent" :score="score"></result-card>
-
-
+    
   </div>
   </transition>
 </template>
@@ -99,5 +98,4 @@ export default {
 .fade-leave-active {
   transition: opacity 0.2s ease;
 }
-
 </style>

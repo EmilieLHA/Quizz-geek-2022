@@ -100,11 +100,17 @@ export default {
   #logo img {
     width: 200px;
   }
+  .link a {  
+  font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 425px ) {
   #logo img {
-    width: 150px;
+    width: 100px;
+  }
+  .link a {  
+  font-size: 10px;
   }
 }
 

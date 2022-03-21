@@ -9,6 +9,8 @@
       </div>
 
 
+      <transition name="fade" mode="out-in">
+        
         <div class="card-body" v-if="!showComment">
           <h4 class="card-title"> VRAI OU FAUX?</h4>
           <div class="card-text">
@@ -32,6 +34,7 @@
           </div>
         </div>
 
+      </transition>
     </div>
 
   </div>
@@ -221,6 +224,18 @@ export default {
       font-size: 2vw;
     }
   }
+
+  @media screen and (max-width: 425px ) {
+
+  .card-body h4 {
+      font-size: 4vw;
+  }
+  
+  .card-container{
+    height: 400px;
+    width: 300px;
+  }
+}
 
 /* ------------- Transitions ---------------- */
 
