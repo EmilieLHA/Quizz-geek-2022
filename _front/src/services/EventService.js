@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://quiz-geek.herokuapp.com//api/'
+    baseURL: 'https://quiz-geek.herokuapp.com/api/'
 })
 
 export function getQuestions(theme_id) {
