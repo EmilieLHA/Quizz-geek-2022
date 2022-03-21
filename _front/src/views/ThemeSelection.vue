@@ -1,6 +1,8 @@
 <template>
 
     <div class="themeSelection">
+
+      <loader v-if="isLoading" color="#f1b150"></loader>
     
       <div class="theme-cards" v-if="!isLoading">
         <theme-card v-for="theme in themes" :key="theme.theme_id" :theme="theme"></theme-card>
@@ -13,11 +15,13 @@
 <script>
 import {getThemes} from '@/services/EventService'
 import ThemeCard from '../components/ThemeCard.vue'
+import Loader from '../components/Loader.vue'
 
 export default {
   name: 'ThemeSelection',
   components: {
     "theme-card": ThemeCard,
+    "loader": Loader
   },
   data() {
     return {
