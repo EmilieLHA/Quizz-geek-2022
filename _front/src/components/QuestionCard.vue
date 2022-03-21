@@ -8,30 +8,29 @@
         <img :src="getImgUrl(question.image)" alt="image">
       </div>
 
-      <div class="card-body">
 
-        <h4 v-if="!showComment" class="card-title"> VRAI OU FAUX?</h4>
-        <h4 v-else>{{ (this.correctAnswer == true) ? "BRAVO, bonne réponse!" : "Mauvaise réponse!" }}</h4>
-
-        <div class="card-text">
-          <p v-if="!showComment" class="question">{{question.question}}</p>
-
-          <p v-else>C'est {{(question.answer == true) ? "VRAI" : "FAUX"}}</p>
-          <p v-if="showComment">{{question.comment}}</p>
+        <div class="card-body" v-if="!showComment">
+          <h4 class="card-title"> VRAI OU FAUX?</h4>
+          <div class="card-text">
+            <p class="question">{{question.question}}</p>
+          </div>
+          <div class="buttons">
+            <input class="selection" type="button" id="vrai" @click="checkScore" value="Vrai">
+            <input class="selection" type="button" id="faux" @click="checkScore" value="Faux">
+          </div>
         </div>
 
-        <div class="buttons" v-if="!showComment">
-          <input class="selection" type="button" id="vrai" @click="checkScore" value="Vrai">
-          <input class="selection" type="button" id="faux" @click="checkScore" value="Faux">
+        <div class="card-body" v-else>
+          <h4 class="card-title"> {{ (this.correctAnswer == true) ? "BRAVO, bonne réponse!" : "Mauvaise réponse!" }} </h4>
+          <div class="card-text">
+            <p class="question">C'est {{(question.answer == true) ? "VRAI" : "FAUX"}}</p>
+            <p>{{question.comment}}</p>
+          </div>
+          <div class="buttons">
+            <input v-if="!endOfQuiz" type="button" class="next" @click="callNextQuestion" value="Next">
+            <input v-else type="button" class="next" value="Résultats" @click="sendResults"> 
+          </div>
         </div>
-        <div class="buttons" v-else-if="showComment && !endOfQuiz">
-          <input type="button" class="next" @click="callNextQuestion" value="Next">
-        </div>
-        <div class="buttons" v-else-if="showComment && endOfQuiz">
-            <input type="button" class="next" value="Résultats" @click="sendResults"> 
-        </div>
-
-      </div>
 
     </div>
 
@@ -223,6 +222,17 @@ export default {
     }
   }
 
+/* ------------- Transitions ---------------- */
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
 /*
   /* Colors 
 HEX
