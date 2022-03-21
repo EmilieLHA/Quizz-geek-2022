@@ -63,8 +63,7 @@ export default {
 
   //Boolean parameters thats changes each time you go to next question in order to change content
   watch: {
-    checkPageTurn(newVal, oldVal) {
-      // console.log('Prop reset change form', oldVal, 'to', newVal);
+    checkPageTurn() {
       this.showComment = false;
       this.correctAnswer = undefined;
     }
