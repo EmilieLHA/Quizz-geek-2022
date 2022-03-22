@@ -24,7 +24,7 @@
 
         <div class="link-bloc">
           <span class="link">
-            <a href="https://emilielharidon.com/"> Mon Portfolio</a>
+            <a href="https://emilielharidon.com/" target="_blank"> Mon Portfolio</a>
           </span>
         </div>
 
