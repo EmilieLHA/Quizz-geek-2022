@@ -24,7 +24,7 @@
 
         <div class="link-bloc">
           <span class="link">
-            <a href="https://emilielharidon.com/" target="_blank"> Mon Portfolio</a>
+            <a href="https://emilielharidon.com/"> Mon Portfolio</a>
           </span>
         </div>
 
@@ -97,8 +97,13 @@ export default {
 
 /* ------------- Mediaqueries ---------------- */
 @media screen and (max-width: 768px ) {
+  .nav {
+  padding-right: 10px;
+  padding-left: 10px;
+  }
+
   #logo img {
-    width: 200px;
+    width: 150px;
   }
   .link a {  
   font-size: 15px;

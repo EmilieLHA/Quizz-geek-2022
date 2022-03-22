@@ -216,23 +216,34 @@ export default {
     .card-body {
       height: 100%; 
       padding-top: 30px;
-      font-size: 3vw;
+      font-size: 12px;
     }
 
     .card-body h4 {
-      font-size: 2vw;
+      font-size: 16px;
     }
   }
 
   @media screen and (max-width: 425px ) {
 
   .card-body h4 {
-      font-size: 4vw;
+      font-size: 16px;
   }
   
   .card-container{
     height: 400px;
     width: 300px;
+  }
+
+  .card-body {
+    height: 100%; 
+    padding-top: 10px;
+  }
+
+  .card-body p {
+    font-size: 12px;
+    text-align: justify;
+    flex: none;
   }
 }
 
