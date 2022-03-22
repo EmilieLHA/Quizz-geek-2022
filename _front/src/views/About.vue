@@ -23,7 +23,7 @@
           
         </div>
 
-        <a href="https://emilielharidon.com" class="button" target="blank">Venez me rendre visite</a>
+        <a href="https://emilielharidon.com" class="button">Venez me rendre visite</a>
         
       </div>
 
